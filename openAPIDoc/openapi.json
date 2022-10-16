@@ -1,0 +1,540 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Player OpenAPI",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "paths": {
+    "/api/players": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Get All Playes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "username": {
+                        "type": "string",
+                        "example": "ano"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "ano123@gmail.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "ano123"
+                      },
+                      "experience": {
+                        "type": "integer",
+                        "example": 0
+                      },
+                      "lvl": {
+                        "type": "integer",
+                        "example": 0
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2022-10-13T11:56:05.396Z"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "example": "2022-10-13T11:56:05.396Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Some error occurred while retrieving players."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "ano"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "ano123@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "ano123"
+                  },
+                  "experience": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "lvl": {
+                    "type": "integer",
+                    "example": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created New Playes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "ano"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "ano123@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "ano123"
+                    },
+                    "experience": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "lvl": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2022-10-13T11:56:05.396Z"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2022-10-13T11:56:05.396Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Request Body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Invalid Request Body"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Some error occurred while creating the Player."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/players/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "id of the player",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "ano"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "ano123@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "ano123"
+                  },
+                  "experience": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "lvl": {
+                    "type": "integer",
+                    "example": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update Existing Playes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Player was updated successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Cannot update Player with id=1. Maybe Player was not found or req.body is empty!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Request Body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Invalid Request Body"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Error updating Player with id=1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "id of the player",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succes Deleting Playes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Player was deleted successfully!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Cannot delete Player with id=$1. Maybe Player was not found!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Could not delete Player with id=1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "id of the player",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Playes With Specific Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "ano"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "ano123@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "ano123"
+                    },
+                    "experience": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "lvl": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2022-10-13T11:56:05.396Z"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2022-10-13T11:56:05.396Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Error retrieving Player with id=1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/players/exp/{id}": {
+      "post": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "id of the player",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "exp": {
+                    "type": "integer",
+                    "example": 100
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update Playes EXP",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Player with id=1 has more experience."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Cannot update Player with id=1!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Request Body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Invalid Request Body"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Error updating Player exp with id=1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
